@@ -8,7 +8,14 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     RouterModule.forRoot([
       { path: '', redirectTo: '/main', pathMatch: 'full' },
       { path: 'main', component: MainComponent },
-      { path: 'portfolio', component: PortfolioComponent },
+      {
+        path: 'portfolio/:id',
+        component: PortfolioComponent
+      },
+      {
+        path: 'portfolio',
+        redirectTo: 'portfolio/all',
+      }
     ]),
   ],
   exports: [RouterModule]

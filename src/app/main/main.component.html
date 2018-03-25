@@ -1,6 +1,40 @@
 <div class="main-page">
-    <p>
-      main works!
-    </p>
-</div>
+  <ng-container>
+    <div *ngFor="let item of items"
+         class="main-page__image">
 
+      <div class="main-page__image_title"
+           *ngIf="item['vimeoData']">
+        <h2>
+          {{ item['vimeoData']['title'] }}
+        </h2>
+      </div>
+
+      <div class="main-page__image_item" *ngIf="item['vimeoData']">
+        <img #imageItem
+             (click)="mediaDownload(item.link)"
+             [src]="item['vimeoData']['thumbnail_large']"
+             (load)="onImageLoad(imageItem)">
+
+        <p [innerHTML]="item['vimeoData']['description'] || 'Lorem insup...'">
+        </p>
+      </div>
+    </div>
+  </ng-container>
+  <div class="main-page__video"
+       *ngIf="!show">
+
+    <div (click)="hideVideo()"
+         class="main-page__video_close">
+    </div>
+
+    <iframe [src]="url"
+            width="800"
+            height="450"
+            frameBorder="0"
+            webkitAllowFullScreen
+            mozAllowFullScreen
+            allowFullScreen>
+    </iframe>
+  </div>
+</div>

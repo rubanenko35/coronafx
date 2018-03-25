@@ -1,0 +1,9 @@
+<div class="portfolio-navigation__wrapper">
+  <div class="portfolio-navigation">
+    <div class="portfolio-navigation__block"
+      *ngFor="let item of items"
+      routerLinkActive="active">
+      <a [routerLink]="'/portfolio/' + item.link">{{ item.name }}</a>
+    </div>
+  </div>
+</div>

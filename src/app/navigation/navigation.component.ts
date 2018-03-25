@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -9,6 +9,43 @@ import { ActivatedRoute } from '@angular/router';
 export class NavigationComponent implements OnInit, AfterViewInit {
   @ViewChild('navigation')navigation: ElementRef;
   @ViewChild('main')main: ElementRef;
+  @ViewChild('portfolio')portfolio: ElementRef;
+
+
+  public items = [
+    {
+      name: 'All',
+      link: 'all'
+    },
+    {
+      name: 'Color Correction',
+      link: 'color-correction'
+    },
+    {
+      name: 'Compositing',
+      link: 'compositing'
+    },
+    {
+      name: 'Animation',
+      link: 'animation'
+    },
+    {
+      name: 'Camera Tracking',
+      link: 'camera-tracking'
+    },
+    {
+      name: 'Keying/Rotoscoping',
+      link: 'keying-rotoscoping'
+    },
+    {
+      name: 'Motion Graphics',
+      link: 'motion-graphics'
+    },
+    {
+      name: 'VR',
+      link: 'vr'
+    }
+  ]
 
   constructor(private renderer: Renderer2,
               private route: ActivatedRoute) { }
@@ -17,24 +54,8 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.renderer.addClass(this.main.nativeElement, 'clicked');
-    // console.log('router', this.route)
-    // this.route.url
-    //   .subscribe( (el) => {
-    //     console.log('el', el)
-    //   })
+
   }
 
-  addClass(target) {
-    // console.log(event.target, this.navigation)
-    // debugger;
-    Array.from(this.navigation.nativeElement.children).forEach((el)=>{
-      this.renderer.removeClass(el.children[0] , 'clicked');
-    });
-    if(target){
-      this.renderer.addClass(this[target].nativeElement, 'clicked');
-    } else {
-      this.renderer.addClass(event.target, 'clicked');
-    }
-  }
+
 }

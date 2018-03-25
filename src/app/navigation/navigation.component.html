@@ -1,15 +1,22 @@
 <div class="navigation">
-  <div class="navigation__logo" (click)="addClass('main')">
+  <div class="navigation__logo">
     <a routerLink="/main"></a>
   </div>
   <div class="navigation__links" #navigation >
-    <div (click)="addClass()"
+    <div routerLinkActive="active"
          class="navigation__links--wrapper">
       <a #main routerLink="/main">Main</a>
     </div>
-    <div (click)="addClass()"
+    <div routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact: true}"
          class="navigation__links--wrapper">
-      <a routerLink="/portfolio">Portfolio</a>
+      <a routerLink="/portfolio/all">Portfolio</a>
+      <ul class="nested-links">
+        <li *ngFor="let item of items"
+            routerLinkActive="active">
+          <a [routerLink]="'/portfolio/' + item.link">{{ item.name }}</a>
+        </li>
+      </ul>
     </div>
   </div>
   <div class="navigation__social-networks">

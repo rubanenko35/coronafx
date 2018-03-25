@@ -1,3 +1,47 @@
-<p>
-  portfolio works!
-</p>
+<div class="portfolio-page">
+  <app-portfolio-navigation class="portfolio-page__nav">
+
+  </app-portfolio-navigation>
+
+
+  <div class="portfolio-page__block">
+    <div (click)="mediaDownload(item.link, item)"
+         *ngFor="let item of items"
+         class="portfolio-page__block_image">
+
+      <img #imageItem *ngIf="item['vimeoData']"
+           (load)="onImageLoad(imageItem, imageText)"
+
+           [src]="item['vimeoData']['thumbnail_large']">
+
+      <div #imageText class="text-wrapper">
+        <p *ngIf="item['vimeoData']">
+          {{ item['vimeoData']['title'] }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="portfolio-page__video"
+       *ngIf="!show">
+
+    <div (click)="hideVideo()"
+         class="portfolio-page__video_close">
+    </div>
+
+    <iframe [src]="url"
+            width="800"
+            height="450"
+            frameBorder="0"
+            webkitAllowFullScreen
+            mozAllowFullScreen
+            allowFullScreen>
+    </iframe>
+
+    <div [innerHTML]="description">
+    </div>
+
+  </div>
+
+
+</div>

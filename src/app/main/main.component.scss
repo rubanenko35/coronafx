@@ -1,15 +1,71 @@
-//.main-page{
-//  height: 100%;
-//  display: grid;
-//  grid-template-columns: 1fr;
-//  grid-template-rows: 1fr 80px;
-//  &__content{
-//    grid-column-start: 1;
-//    grid-row-start: 1;
-//  }
-//}
-//
-//app-footer{
-//  grid-column-start: 1;
-//  grid-row-start: 2;
-//}
+.main-page{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(7,7,7, 0.95);
+  &__image{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+
+    &_title {
+      display: flex;
+      min-height: 70px;
+      justify-content: center;
+      align-items: center;
+      & > h2 {
+        color: white;
+      }
+    }
+    &_item{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      //width: 100%;
+
+      & > img{
+        transition: 0.7s;
+        margin-bottom: 15px;
+        opacity: 0;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+      }
+
+      & > p {
+        color: white;
+      }
+    }
+  }
+  &__video{
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_close{
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      top: 20px;
+      right: 20px;
+      background-image: url("../../assets/icons/delete.png");
+    }
+
+  }
+}
+

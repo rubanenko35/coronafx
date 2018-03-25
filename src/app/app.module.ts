@@ -11,6 +11,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CommonModule } from '@angular/common';
 import { AppRoutingRoutes } from './app-routing.routes';
 import { AppService } from './app-service.service';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { PortfolioNavigationComponent } from './portfolio-navigation/portfolio-navigation.component';
 
 
 @NgModule({
@@ -18,14 +20,20 @@ import { AppService } from './app-service.service';
     BrowserModule,
     HttpClientModule,
     CommonModule,
-    AppRoutingRoutes
+    AppRoutingRoutes,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
     NavigationComponent,
     FooterComponent,
     MainComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    SpinnerComponent,
+    PortfolioNavigationComponent
+  ],
+  exports: [
+    PortfolioNavigationComponent
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
